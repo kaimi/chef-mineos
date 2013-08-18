@@ -86,6 +86,11 @@ service "hiawatha" do
   action :nothing
 end
 
+cookbook_file "/var/www/hiawatha/index.html" do
+  source "index.html"
+  mode "0644"
+end
+
 cron "backup_hourly" do
   minute "0"
   user "mc"
