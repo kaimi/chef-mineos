@@ -70,8 +70,9 @@ execute "rsync_scripts" do
   group "mc"
 end
 
-execute 'chmod +x /usr/games/minecraft/*.py'
-execute 'chmod +x /usr/games/minecraft/*.sh'
+execute "chmod" do
+  command 'chmod u+x,g+x /usr/games/minecraft/*.{py,sh}'
+end
 
 link "/var/www/hiawatha/admin/cgi-bin/server.py" do
   to "/usr/games/minecraft/server.py"

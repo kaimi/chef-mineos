@@ -1,5 +1,5 @@
 name             'mineos'
-maintainer       'ka’imi'
+maintainer       'ka\'imi'
 maintainer_email 'kaimi+chef@kaimi.cc'
 license          ''
 description      'Installs/Configures mineos'
