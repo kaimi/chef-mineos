@@ -12,6 +12,7 @@ Requirements
 
 #### packages
 - `chef` :)
+- [chef-apt-repo cookbook](https://github.com/sometimesfood/chef-apt-repo "github: chef-apt-repo cookbook")
 
 Attributes
 ----------
