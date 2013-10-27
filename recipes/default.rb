@@ -5,127 +5,96 @@
 # Copyright 2013, ka’imi
 #
 
-execute "java_license" do
-  command "echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections"
+dir = node['mineos']['basedir']
+
+# /usr/games/minecraft symlink || abort
+if Dir.exists?("/usr/games/minecraft") && !File.symlink?("/usr/games/minecraft") then
+  Chef::Log.fatal("'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook.")
+  raise "'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook."
 end
 
-ppa "ppa:webupd8team/java"
+link "/usr/games/minecraft" do
+  to "#{dir}/current"
+end
 
-%w{ screen libxslt1.1 rsync rdiff-backup oracle-java7-installer oracle-java7-set-default }.each do |p|
+# install required packages
+%w{ screen python-cherrypy3 rdiff-backup git openjdk-7-jre-headless }.each do |p|
   package p
 end
 
-directory "/usr/java"
-link "/usr/java/java-latest" do
-  to "/usr/lib/jvm/java-7-oracle/bin"
+# create config file
+directory "#{dir}/shared" do
+  recursive true
+end
+template "#{dir}/shared/mineos.conf" do
+  source "mineos.conf.erb"
+end
+link "/etc/mineos.conf" do
+  to "#{dir}/current/mineos.conf"
 end
 
-hiawatha_pkg = "hiawatha_9.2_amd64.deb"
-remote_file "/root/#{hiawatha_pkg}" do
-  source "http://files.tuxhelp.org/hiawatha/#{hiawatha_pkg}"
-  action :create_if_missing
-  notifies :install, "dpkg_package[#{hiawatha_pkg}]", :immediately
-  notifies :start, "service[hiawatha]", :immediately
+# deploy the latest version
+deploy_revision dir do
+  repo "https://github.com/hexparrot/mineos.git"
+  branch node['mineos']['version']
+  shallow_clone true
+  symlink_before_migrate.clear
+  create_dirs_before_symlink.clear
+  purge_before_symlink %w{ mineos.conf }
+  symlinks(
+    "mineos.conf" => "mineos.conf"
+  )
+  notifies :restart, "service[mineos]"
 end
 
-dpkg_package hiawatha_pkg do
-  source "/root/#{hiawatha_pkg}"
-  action :nothing
+# generate self signed SSL cert
+if node['mineos']['config']['ssl']['generate'] && (!File.exists?(node['mineos']['config']['ssl']['cert']) || !File.exists?(node['mineos']['config']['ssl']['key'])) then
+  execute "generate certs" do
+    command "sh generate-sslcert.sh"
+    cwd "#{dir}/current"
+  end
 end
 
-user "mc" do
-  home "/home/mc"
-end
-directory "/home/mc" do
-  owner "mc"
-  group "mc"
-end
-
-directory "/usr/games/minecraft" do
-  owner "mc"
-  group "mc"
+# services, copy da filez0rs
+%w{ mineos minecraft}.each do |f|
+  remote_file "/etc/init.d/#{f}" do
+    source "https://github.com/hexparrot/mineos/raw/#{node['mineos']['version']}/init/#{f}"
+    mode 0755
+  end
 end
 
-directory "/var/www/hiawatha/" do
-  owner "mc"
-  group "mc"
+# enable the services
+service "minecraft" do
+  action :enable
 end
-directory "/var/www/hiawatha/admin/" do
-  owner "mc"
-  group "mc"
-end
-directory "/var/www/hiawatha/admin/cgi-bin" do
-  owner "mc"
-  group "mc"
+service "mineos" do
+  action :enable
 end
 
-execute "rsync_webui" do
-  command "rsync -r rsync://mineos@codeemo.com/stable_webui /var/www/hiawatha/admin"
-  user "mc"
-  group "mc"
+grp = node['mineos']['group']
+group grp do
+  append true
 end
-execute "rsync_scripts" do
-  command "rsync -r rsync://mineos@codeemo.com/stable_scripts /usr/games/minecraft/"
-  user "mc"
-  group "mc"
-end
-
-execute "chmod" do
-  command 'chmod u+x,g+x /usr/games/minecraft/*.{py,sh}'
+# set group rights to create profiles
+file "/var/games/minecraft/profiles/profile.config" do
+  group grp
+  mode 0755
 end
 
-link "/var/www/hiawatha/admin/cgi-bin/server.py" do
-  to "/usr/games/minecraft/server.py"
+# profile fix
+if node['mineos']['profile_fix']['enable'] then
+  template "#{dir}/current/stock_profiles.py" do
+    source "stock_profiles.py.erb"
+    group grp
+    variables({
+      :versions => node['mineos']['profile_fix']['versions']
+    })
+  end
 end
 
-remote_file "/etc/hiawatha/hiawatha.conf" do
-  source "http://minecraft.codeemo.com/files/ubuntu/hiawatha.conf"
-  notifies :restart, "service[hiawatha]"
-end
-service "hiawatha" do
-  action :nothing
-end
-
-cookbook_file "/var/www/hiawatha/index.html" do
-  source "index.html"
-  mode "0644"
-end
-
-cron "backup_hourly" do
-  minute "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab backup hourly"
-end
-cron "archive_hourly" do
-  minute "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab archive hourly"
-end
-
-cron "backup_daily" do
-  minute "0"
-  hour "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab backup daily"
-end
-cron "archive_daily" do
-  minute "0"
-  hour "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab archive daily"
-end
-
-cron "backup_weekly" do
-  minute "0"
-  hour "0"
-  weekday "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab backup weekly"
-end
-cron "archive_weekly" do
-  minute "0"
-  hour "0"
-  weekday "0"
-  user "mc"
-  command "cd /usr/games/minecraft; ./mineos_console.py crontab archive weekly"
+# logrotate
+logrotate_app "mineos" do
+  cookbook "logrotate"
+  path "/var/log/mineos.log"
+  rotate 12
 end
