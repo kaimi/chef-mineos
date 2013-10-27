@@ -111,9 +111,9 @@ Attributes
   </tr>
   <tr>
     <td><tt>['mineos']['config']['ssl']['enable']</tt></td>
-    <td>String</td>
+    <td>Boolean</td>
     <td>whether to enable SSL encryption for the webui</td>
-    <td><tt>True</tt></td>
+    <td><tt>true</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['config']['ssl']['generate']</tt></td>

@@ -36,7 +36,6 @@ end
 # deploy the latest version
 deploy_revision dir do
   repo "https://github.com/hexparrot/mineos.git"
-  action :force_deploy
   branch node['mineos']['version']
   shallow_clone true
   symlink_before_migrate.clear
@@ -73,7 +72,9 @@ service "mineos" do
 end
 
 grp = node['mineos']['group']
-group grp
+group grp do
+  append true
+end
 # set group rights to create profiles
 file "/var/games/minecraft/profiles/profile.config" do
   group grp
