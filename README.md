@@ -16,7 +16,7 @@ Known Issues
 
 Right now (2013-10-27) MineOS 0.6 has some issues with Minecraft 1.7:
 
-- The web UI will always show -1 connected players.
+- The web UI will always shows -1 connected players.
 - The web UI does not display server logs.
 
 These are general problems with MineOS and not specific to this cookbook.
@@ -62,7 +62,7 @@ Attributes
   <tr>
     <td><tt>['mineos']['profile_fix']['enable']</tt></td>
     <td>Boolean</td>
-    <td>wheter to overwrite the standard <tt>profile.config</tt> with a patched 
+    <td>whether to overwrite the standard <tt>profile.config</tt> with a patched 
     one to include base profiles for newly released minecraft versions</td>
     <td><tt>true</tt></td>
   </tr>
