@@ -11,6 +11,16 @@ please
 - run mineos::default
 - restore your servers (e.g. use the web ui to re-create them from archives)
 
+Known Issues
+------------
+
+Right now (2013-10-27) MineOS 0.6 has some issues with Minecraft 1.7:
+
+- The web UI will always show -1 connected players.
+- The web UI does not display server logs.
+
+These are general problems with MineOS and not specific to this cookbook.
+
 Requirements
 ------------
 
@@ -20,7 +30,6 @@ Requirements
 
 #### packages
 - `chef` :)
-- [chef-apt-repo cookbook](https://github.com/sometimesfood/chef-apt-repo "github: chef-apt-repo cookbook")
 
 Attributes
 ----------
@@ -72,7 +81,7 @@ Attributes
   <tr>
     <td><tt>['mineos']['config']['basedir']</tt></td>
     <td>String</td>
-    <td>where to minecraft server data</td>
+    <td>where to put minecraft server data</td>
     <td><tt>/var/games/minecraft</tt></td>
   </tr>
   <tr>
@@ -96,7 +105,7 @@ Attributes
   </tr>
   <tr>
     <td><tt>['mineos']['config']['host']['port']</tt></td>
-    <td>Integer</td>
+    <td>int</td>
     <td>port for the webui to listen on</td>
     <td><tt>8080</tt></td>
   </tr>
@@ -122,20 +131,22 @@ Attributes
   <tr>
     <td><tt>['mineos']['config']['ssl']['key']</tt></td>
     <td>String</td>
-    <td>where the webui SSL privite key is stored; do not change if self signed 
+    <td>where the webui SSL private key is stored; do not change if self signed 
     cert generation is enabled</td>
     <td><tt>/etc/ssl/certs/mineos.key</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['config']['ssl']['ca']</tt></td>
     <td>String</td>
-    <td>where the webui SSL cert ca is stored</td>
+    <td>where the webui SSL cert ca is stored; do not change if self signed 
+    cert generation is enabled</td>
     <td><tt>&lt;empty&gt;</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['config']['ssl']['chain']</tt></td>
     <td>String</td>
-    <td>where the webui SSL cert chain is stored</td>
+    <td>where the webui SSL cert chain is stored; do not change if self signed 
+    cert generation is enabled</td>
     <td><tt>&lt;empty&gt;</tt></td>
   </tr>
 </table>
