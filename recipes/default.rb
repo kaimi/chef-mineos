@@ -72,7 +72,9 @@ service "mineos" do
 end
 
 grp = node['mineos']['group']
-group grp
+group grp do
+  append true
+end
 # set group rights to create profiles
 file "/var/games/minecraft/profiles/profile.config" do
   group grp
