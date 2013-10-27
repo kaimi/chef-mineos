@@ -4,7 +4,7 @@ This file is used to list changes made in each version of mineos.
 
 ## 2.0.0
 
-* \[[#1]\](https://github.com/kaimi/chef-mineos/issues/1) upgrade to 
+* \[[#1](https://github.com/kaimi/chef-mineos/issues/1)\] upgrade to 
   [mineos](https://github.com/hexparrot/mineos) 0.6.0
 * removed dependency on apt-repo cookbook
 * added dependency on logrotate cookbook
