@@ -6,6 +6,7 @@ information.
 
 **CAUTION**: If you’re upgrading from 1.0.x (mineos 0.5) to 2.x.x (mineos 0.6), 
 please
+
 - backup your servers (e.g. create an archive via the web ui)
 - remove mineos 0.5 or just setup a new host machine
 - run mineos::default
