@@ -18,6 +18,9 @@ Right now (2013-10-27) MineOS 0.6 has some issues with Minecraft 1.7:
 
 - The web UI will always show -1 connected players.
 - The web UI does not display server logs.
+- The web UI will load very slowly.
+- The web UI will display wrong and/or missing information about the server as 
+  long as it is running.
 
 These are general problems with MineOS and not specific to this cookbook.
 
