@@ -23,6 +23,9 @@ Requirements
 #### packages
 - `chef` :)
 
+#### cookbooks
+- `logrotate`
+
 Attributes
 ----------
 
