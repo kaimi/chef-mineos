@@ -1,7 +1,8 @@
 mineos Cookbook
 ===============
-This cookbook installs [mineos](http://codeemo.com) on a fresh ubuntu system.
-Refer to <http://codeemo.com/mineoswiki/index.php?title=Ubuntu> for further
+
+This cookbook installs and configures [mineos](http://codeemo.com). Refer to 
+<http://codeemo.com/mineoswiki/index.php?title=Installing_MineOS> for further
 information.
 
 **CAUTION**: If you’re upgrading from 1.0.x (mineos 0.5) to 2.x.x (mineos 0.6), 
@@ -18,8 +19,8 @@ Known Issues
 Right now (2013-10-27) MineOS 0.6 has some issues with Minecraft 1.7:
 
 - The web UI will always show -1 connected players.
-- The web UI does not display server logs.
-- The web UI will load very slowly.
+- The web UI will not display server logs.
+- The web UI will load very slowly as long as a server is running.
 - The web UI will display wrong and/or missing information about the server as 
   long as it is running.
 
@@ -48,7 +49,7 @@ Attributes
   <tr>
     <td><tt>['mineos']['group']</tt></td>
     <td>String</td>
-    <td>the group to put all ['mineos']['users'] in</td>
+    <td>the group to grant profile editing rights to</td>
     <td><tt>mineos</tt></td>
   </tr>
   <tr>
