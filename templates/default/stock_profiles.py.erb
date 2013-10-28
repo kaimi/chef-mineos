@@ -8,12 +8,12 @@ __version__ = "0.6.0"
 __email__ = "wdchromium@gmail.com"
  
 STOCK_PROFILES = {
-    'vanilla162': {
-        'name': 'vanilla162',
+    'vanilla172': {
+        'name': 'vanilla172',
         'type': 'standard_jar',
-        'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/1.6.2/minecraft_server.1.6.2.jar',
-        'save_as': 'minecraft_server.jar',
-        'run_as': 'minecraft_server.jar',
+        'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.2/minecraft_server.1.7.2.jar',
+        'save_as': 'minecraft_server.1.7.2.jar',
+        'run_as': 'minecraft_server.1.7.2.jar',
         'ignore': '',
         'desc': 'official minecraft_server.jar'
         },
@@ -27,12 +27,12 @@ STOCK_PROFILES = {
         'desc': 'official minecraft_server.jar'
         }, 
 <% @versions.each do |v| %>
-  'vanilla<%= v.gsub(/\./, "") %>': {
+    'vanilla<%= v.gsub(/\./, "") %>': {
         'name': 'vanilla<%= v.gsub(/\./, "") %>',
         'type': 'standard_jar',
-	'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/<%= v %>/minecraft_server.<%= v %>.jar',
-        'save_as': 'minecraft_server.jar',
-        'run_as': 'minecraft_server.jar',
+        'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/<%= v %>/minecraft_server.<%= v %>.jar',
+        'save_as': 'minecraft_server.<%= v %>.jar',
+        'run_as': 'minecraft_server.<%= v%>..jar',
         'ignore': '',
         'desc': 'official minecraft_server.jar'
 	}, 
