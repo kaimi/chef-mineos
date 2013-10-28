@@ -44,7 +44,7 @@ deploy_revision dir do
   symlinks(
     "mineos.conf" => "mineos.conf"
   )
-  notifies :restart, "service[mineos]"
+  notifies :restart, "service[mineos]", :immediately
 end
 
 # generate self signed SSL cert
