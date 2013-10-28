@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.0.1
+
+* fixed: directory `/var/games/minecraft` missing on first run of ::default
+* fixed: typos in README & CHANGELOG
+
 ## 2.0.0
 
 * \[[#1](https://github.com/kaimi/chef-mineos/issues/1)\] upgrade to 
