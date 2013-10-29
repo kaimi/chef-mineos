@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.1.0
+
+* full support for Minecraft 1.7.2
+* now depends on chef ≥11.6.0
+* fixed: README typos & errors
+
 ## 2.0.1
 
 * fixed: directory `/var/games/minecraft` missing on first run of ::default
