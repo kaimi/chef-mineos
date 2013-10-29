@@ -8,8 +8,8 @@ default['mineos']['group'] = "mineos"
 default['mineos']['basedir'] = "/srv/mineos"
 default['mineos']['version'] = "master"
 
-default['mineos']['profile_fix']['enable'] = true
-default['mineos']['profile_fix']['versions'] = ["1.7.2"]
+default['mineos']['profile_fix']['enable'] = false
+default['mineos']['profile_fix']['versions'] = []
 
 default['mineos']['service']['enable'] = true
 

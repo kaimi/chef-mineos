@@ -58,8 +58,9 @@ end
 # services, copy da filez0rs
 %w{ mineos minecraft}.each do |f|
   remote_file "/etc/init.d/#{f}" do
-    source "https://github.com/hexparrot/mineos/raw/#{node['mineos']['version']}/init/#{f}"
+    source "file://#{dir}/current/init/#{f}"
     mode 0755
+    notifies :restart, "service[#{f}]"
   end
 end
 
