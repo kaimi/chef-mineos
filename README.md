@@ -21,7 +21,7 @@ Requirements
 - written for and tested on Ubuntu
 
 #### packages
-- `chef` :)
+- `chef` :) (≥11.6.0)
 
 #### cookbooks
 - `logrotate`
