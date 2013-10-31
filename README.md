@@ -49,6 +49,12 @@ Attributes
     <td><tt>/srv/mineos</tt></td>
   </tr>
   <tr>
+    <td><tt>['mineos']['repository']</tt></td>
+    <td>String</td>
+    <td>the git repo to install mineos from</td>
+    <td><tt>https://github.com/hexparrot/mineos.git</tt></td>
+  </tr>
+  <tr>
     <td><tt>['mineos']['version']</tt></td>
     <td>String</td>
     <td>version to checkout from the git repo; can be any commit identifier (id, branch, tag, …)</td>
@@ -59,13 +65,13 @@ Attributes
     <td>Boolean</td>
     <td>whether to overwrite the standard <tt>profile.config</tt> with a patched 
     one to include base profiles for newly released minecraft versions</td>
-    <td><tt>true</tt></td>
+    <td><tt>false</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['profile_fix']['versions']</tt></td>
     <td>String[]</td>
     <td>versions to include in the profile fix</td>
-    <td><tt>["1.7.2"]</tt></td>
+    <td><tt>[]</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['service']['enable']</tt></td>

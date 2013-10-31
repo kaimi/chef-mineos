@@ -35,7 +35,7 @@ end
 
 # deploy the latest version
 deploy_revision dir do
-  repo "https://github.com/hexparrot/mineos.git"
+  repo node['mineos']['repository']
   branch node['mineos']['version']
   shallow_clone true
   symlink_before_migrate.clear
