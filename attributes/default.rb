@@ -6,6 +6,7 @@
 
 default['mineos']['group'] = "mineos"
 default['mineos']['basedir'] = "/srv/mineos"
+default['mineos']['repository'] = "https://github.com/hexparrot/mineos.git"
 default['mineos']['version'] = "master"
 
 default['mineos']['profile_fix']['enable'] = false

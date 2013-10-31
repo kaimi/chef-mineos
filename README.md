@@ -49,6 +49,12 @@ Attributes
     <td><tt>/srv/mineos</tt></td>
   </tr>
   <tr>
+    <td><tt>['mineos']['repository']</tt></td>
+    <td>String</td>
+    <td>the git repo to install mineos from</td>
+    <td><tt>https://github.com/hexparrot/mineos.git</tt></td>
+  </tr>
+  <tr>
     <td><tt>['mineos']['version']</tt></td>
     <td>String</td>
     <td>version to checkout from the git repo; can be any commit identifier (id, branch, tag, …)</td>
