@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.2.0
+
+* [\[#2\}](https://github.com/kaimi/chef-mineos/issues/2)\] added attribute 
+  \['mineos'\]\['repository'\] to change the source repo to clone from
+* fixed README for 2.1.0 changes
+
 ## 2.1.0
 
 * full support for Minecraft 1.7.2
@@ -15,7 +21,7 @@ This file is used to list changes made in each version of mineos.
 
 ## 2.0.0
 
-* \[[#1](https://github.com/kaimi/chef-mineos/issues/1)\] upgrade to 
+* [\[#1\}](https://github.com/kaimi/chef-mineos/issues/1)\] upgrade to 
   [mineos](https://github.com/hexparrot/mineos) 0.6.0
 * removed dependency on apt-repo cookbook
 * added dependency on logrotate cookbook
