@@ -9,8 +9,9 @@ dir = node['mineos']['basedir']
 
 # /usr/games/minecraft symlink || abort
 if Dir.exists?("/usr/games/minecraft") && !File.symlink?("/usr/games/minecraft") then
-  Chef::Log.fatal("'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook.")
-  raise "'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook."
+  msg = "'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook."
+  Chef::Log.fatal(msg)
+  raise msg
 end
 
 link "/usr/games/minecraft" do
