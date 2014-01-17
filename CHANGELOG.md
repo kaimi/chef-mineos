@@ -2,6 +2,15 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.3.0
+
+* fixed [\[#3\]](https://github.com/kaimi/chef-mineos/issues/3) fresh install 
+  fails; trying to restart nonexistent service
+* fixed some typos in the docs
+* added GNU GPL license text
+* updated `stock_profiles.py` template for the latest minecraft version and 
+  mineos changes
+
 ## 2.2.0
 
 * [\[#2\]](https://github.com/kaimi/chef-mineos/issues/2) added attribute 
