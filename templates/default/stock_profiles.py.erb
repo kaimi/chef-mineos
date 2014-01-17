@@ -8,12 +8,12 @@ __version__ = "0.6.0"
 __email__ = "wdchromium@gmail.com"
  
 STOCK_PROFILES = {
-    'vanilla172': {
-        'name': 'vanilla172',
+    'vanilla174': {
+        'name': 'vanilla174',
         'type': 'standard_jar',
-        'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.2/minecraft_server.1.7.2.jar',
-        'save_as': 'minecraft_server.1.7.2.jar',
-        'run_as': 'minecraft_server.1.7.2.jar',
+        'url': 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.4/minecraft_server.1.7.4.jar',
+        'save_as': 'minecraft_server.1.7.4.jar',
+        'run_as': 'minecraft_server.1.7.4.jar',
         'ignore': '',
         'desc': 'official minecraft_server.jar'
         },
@@ -59,6 +59,14 @@ STOCK_PROFILES = {
         'url': 'http://dl.bukkit.org/latest-dev/craftbukkit.jar',
         'save_as': 'craftbukkit.jar',
         'run_as': 'craftbukkit.jar',
+        'ignore': '',
+        }
+    'spigot': {
+        'name': 'spigot',
+        'type': 'standard_jar',
+        'url': 'http://ci.md-5.net/job/Spigot/lastSuccessfulBuild/artifact/Spigot-Server/target/spigot.jar',
+        'save_as': 'spigot.jar',
+        'run_as': 'spigot.jar',
         'ignore': '',
         }
     }

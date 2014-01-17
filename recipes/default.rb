@@ -9,8 +9,9 @@ dir = node['mineos']['basedir']
 
 # /usr/games/minecraft symlink || abort
 if Dir.exists?("/usr/games/minecraft") && !File.symlink?("/usr/games/minecraft") then
-  Chef::Log.fatal("'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook.")
-  raise "'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook."
+  msg = "'/usr/games/minecraft' directory exists; please remove any old version of mineos before installing using this cookbook."
+  Chef::Log.fatal(msg)
+  raise msg
 end
 
 link "/usr/games/minecraft" do
@@ -44,7 +45,7 @@ deploy_revision dir do
   symlinks(
     "mineos.conf" => "mineos.conf"
   )
-  notifies :restart, "service[mineos]", :immediately
+  notifies :restart, "service[mineos]"
 end
 
 # generate self signed SSL cert
@@ -70,6 +71,7 @@ service "minecraft" do
 end
 service "mineos" do
   action :enable
+  notifies :create, "file[/var/games/minecraft/profiles/profile.config]"
 end
 
 grp = node['mineos']['group']
@@ -78,6 +80,7 @@ group grp do
 end
 # set group rights to create profiles
 file "/var/games/minecraft/profiles/profile.config" do
+  action :nothing
   group grp
   mode 0755
 end

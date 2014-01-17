@@ -169,6 +169,27 @@ Just include `mineos` in your node's `run_list`:
 Then, put all the users that should be granted full access to the webinterface 
 into the `['mineos']['group']` group.
 
+Or, write a recipe :)
+
+```ruby
+node.set['mineos']['config']['ssl']['enable'] = false
+node.set['mineos']['config']['ssl']['generate'] = false
+node.set['mineos']['repository'] = "https://github.com/kaimi/mineos.git"
+
+include_recipe "mineos"
+
+user "foo" do
+  home "/home/foo"
+  password 'hashedpassword'
+  system true
+end
+
+group "mineos" do
+  action :modify
+  members ["foo"]
+end
+```
+
 Contributing
 ------------
 
