@@ -2,7 +2,12 @@
 
 This file is used to list changes made in each version of mineos.
 
-## 2.3.0
+## 2.2.2
+
+* HOTFIX: custom stock_profiles.py, see [commit on mineos](https://github.com/hexparrot/mineos/commit/1649523463e411560ca1ba766137fcdce8ad2058)
+* corrected CHANGELOG version number typo
+
+## 2.2.1
 
 * fixed [\[#3\]](https://github.com/kaimi/chef-mineos/issues/3) fresh install 
   fails; trying to restart nonexistent service
