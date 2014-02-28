@@ -86,7 +86,7 @@ Attributes
     <td><tt>/var/games/minecraft</tt></td>
   </tr>
   <tr>
-    <td><tt>['mineos']['config']['local']</tt></td>
+    <td><tt>['mineos']['config']['locale']</tt></td>
     <td>String</td>
     <td>webui locale (currently, only <tt>en</tt> and <tt>nl</tt> seem to be 
     suported)</td>
