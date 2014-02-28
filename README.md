@@ -86,11 +86,17 @@ Attributes
     <td><tt>/var/games/minecraft</tt></td>
   </tr>
   <tr>
-    <td><tt>['mineos']['config']['local']</tt></td>
+    <td><tt>['mineos']['config']['locale']</tt></td>
     <td>String</td>
     <td>webui locale (currently, only <tt>en</tt> and <tt>nl</tt> seem to be 
     suported)</td>
     <td><tt>en</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mineos']['config']['mask_password']</tt></td>
+    <td>Boolean</td>
+    <td>whether to mask passwords on the login page by default</td>
+    <td><tt>false</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['config']['logfile']</tt></td>
@@ -109,6 +115,12 @@ Attributes
     <td>int</td>
     <td>port for the webui to listen on</td>
     <td><tt>8080</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mineos']['config']['commit_delay']</tt></td>
+    <td>int</td>
+    <td>in seconds</td>
+    <td><tt>10</tt></td>
   </tr>
   <tr>
     <td><tt>['mineos']['config']['ssl']['enable']</tt></td>
@@ -175,6 +187,7 @@ Or, write a recipe :)
 node.set['mineos']['config']['ssl']['enable'] = false
 node.set['mineos']['config']['ssl']['generate'] = false
 node.set['mineos']['repository'] = "https://github.com/kaimi/mineos.git"
+node.set['mineos']['mask_password'] = true
 
 include_recipe "mineos"
 

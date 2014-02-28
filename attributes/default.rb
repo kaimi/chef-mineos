@@ -16,9 +16,11 @@ default['mineos']['service']['enable'] = true
 
 default['mineos']['config']['basedir'] = "/var/games/minecraft"
 default['mineos']['config']['locale'] = "en"
+default['mineos']['config']['mask_password'] = false
 default['mineos']['config']['logfile'] = "/var/log/mineos.log"
 default['mineos']['config']['host']['address'] = "0.0.0.0"
 default['mineos']['config']['host']['port'] = 8080
+default['mineos']['config']['commit_delay'] = 10
 default['mineos']['config']['ssl']['enable'] = true
 default['mineos']['config']['ssl']['generate'] = true
 default['mineos']['config']['ssl']['cert'] = "/etc/ssl/certs/mineos.crt"

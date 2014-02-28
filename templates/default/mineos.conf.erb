@@ -1,6 +1,7 @@
 [global]
 server.socket_host = "<%= node['mineos']['config']['host']['address'] %>"
 server.socket_port = <%= node['mineos']['config']['host']['port'] %>
+server.commit_delay = <%= node['mineos']['config']['commit_delay'] %>
 
 log.error_file = "<%= node['mineos']['config']['logfile'] %>"
 
@@ -15,3 +16,4 @@ misc.pid_file = "/var/run/mineos.pid"
 misc.require_https = <%= (node['mineos']['config']['ssl']['enable'] ? "True" : "False") %>
 misc.base_directory = "<%= node['mineos']['config']['basedir'] %>"
 misc.localization = "<%= node['mineos']['config']['locale'] %>"
+misc.mask_password = "<%= (node['mineos']['config']['mask_password'] ? "True" : "False") %>"
