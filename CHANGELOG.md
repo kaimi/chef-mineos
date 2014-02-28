@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.2.3
+
+* updated `stock_profiles.py` template for minecraft 1.7.5
+* added settings for `commit_delay` and `mask_password`, see [here](https://github.com/hexparrot/mineos/commit/b83a283e86f39a99d5145df7cc07388c6d7f4f88), [here](https://github.com/hexparrot/mineos/commit/6884b3b7340d09a1811ac17399951ddf16c92cd5) and [here](https://github.com/hexparrot/mineos/commit/fd9e601bdf847f2ca922e8c412aa5643171313c7)
+
 ## 2.2.2
 
 * HOTFIX: custom stock_profiles.py, see [commit on mineos](https://github.com/hexparrot/mineos/commit/1649523463e411560ca1ba766137fcdce8ad2058)
