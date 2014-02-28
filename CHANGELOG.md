@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of mineos.
 
+## 2.2.4
+
+* implements [renamed config option `mask_password`](https://github.com/hexparrot/mineos/commit/64cfe284f4a12db933fccaf099ece2b2ffb55d99)
+
 ## 2.2.3
 
 * updated `stock_profiles.py` template for minecraft 1.7.5
